@@ -23,16 +23,25 @@
                     <h:outputText value="#{customer.customerId}" />
                 </p:column>
 
-                <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
+                <p:column headerText="Nom" sortBy="#{customer.name}" filterBy="#{customer.name}">
                     <h:outputText value="#{customer.name}" />
                 </p:column>
-                <p:column headerText="Ville" sortBy="#{customer.city}" filterBy="#{customer.city}">
+                <p:column headerText="Ville" sortBy="#{customer.city}">
                     <h:outputText value="#{customer.city}" />
                 </p:column>
 
-                <p:column headerText="Country" sortBy="#{customer.discount.code}">
-                    <span class="flag flag-#{customer.discount.code}" style="width: 30px; height: 20px" />
-                    <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.discount.code} : #{customer.discount.rate} %" />
+                <p:column sortBy="#{customer.state} , #{customer.city}" filterBy="#{customer.state}">
+                    <f:facet name="header">
+                        <h:outputText value="Etat"/>
+                    </f:facet>
+                    <h:outputText value="#{customer.state}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Code de Réduction"/>
+                    </f:facet>
+                    <h:outputText value="#{customer.discount.code} : #{customer.discount.rate} %" />
                 </p:column>
 
             </p:dataTable>
