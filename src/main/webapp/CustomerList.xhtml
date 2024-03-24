@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Liste des clients</title>
+    </h:head>
+
+    <div class="card">  
+        <h:form>
+            <p:dataTable var="customer" value="#{customerBean.customers}" widgetVar="customersTable2"
+                         paginator="true" rows="10"
+                         rowsPerPageTemplate="2,4,8,10"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+                <f:facet name="header">
+                    <span>List of Customers</span>
+                </f:facet>
+
+                <p:column headerText="Id" sortBy="#{customer.customerId}">
+                    <h:outputText value="#{customer.customerId}" />
+                </p:column>
+
+                <p:column headerText="Name" sortBy="#{customer.name}" filterBy="#{customer.name}">
+                    <h:outputText value="#{customer.name}" />
+                </p:column>
+                <p:column headerText="Ville" sortBy="#{customer.city}" filterBy="#{customer.city}">
+                    <h:outputText value="#{customer.city}" />
+                </p:column>
+
+                <p:column headerText="Country" sortBy="#{customer.discount.code}">
+                    <span class="flag flag-#{customer.discount.code}" style="width: 30px; height: 20px" />
+                    <h:outputText style="vertical-align: middle; margin-left: .5rem" value="#{customer.discount.code} : #{customer.discount.rate} %" />
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </div>
+</html>

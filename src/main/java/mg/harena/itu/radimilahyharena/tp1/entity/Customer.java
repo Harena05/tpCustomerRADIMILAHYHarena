@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mg.harena.mg.itu.radimilahyharena.tp1.entity;
+package mg.harena.itu.radimilahyharena.tp1.entity;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -39,12 +39,6 @@ import java.io.Serializable;
     @NamedQuery(name = "Customer.findByCreditLimit", query = "SELECT c FROM Customer c WHERE c.creditLimit = :creditLimit")})
 public class Customer implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CUSTOMER_ID")
-    private Integer customerId;
     @Size(max = 30)
     @Column(name = "NAME")
     private String name;
@@ -68,10 +62,17 @@ public class Customer implements Serializable {
     @Size(max = 12)
     @Column(name = "FAX")
     private String fax;
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 40)
     @Column(name = "EMAIL")
     private String email;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CUSTOMER_ID")
+    private Integer customerId;
     @Column(name = "CREDIT_LIMIT")
     private Integer creditLimit;
     @JoinColumn(name = "DISCOUNT_CODE", referencedColumnName = "CODE")
@@ -94,6 +95,55 @@ public class Customer implements Serializable {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public Integer getCreditLimit() {
+        return creditLimit;
+    }
+
+    public void setCreditLimit(Integer creditLimit) {
+        this.creditLimit = creditLimit;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
+
+    public MicroMarket getZip() {
+        return zip;
+    }
+
+    public void setZip(MicroMarket zip) {
+        this.zip = zip;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (customerId != null ? customerId.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Customer)) {
+            return false;
+        }
+        Customer other = (Customer) object;
+        if ((this.customerId == null && other.customerId != null) || (this.customerId != null && !this.customerId.equals(other.customerId))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "mg.harena.mg.itu.radimilahyharena.tp1.entity.Customer[ customerId=" + customerId + " ]";
     }
 
     public String getName() {
@@ -160,53 +210,4 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    public Integer getCreditLimit() {
-        return creditLimit;
-    }
-
-    public void setCreditLimit(Integer creditLimit) {
-        this.creditLimit = creditLimit;
-    }
-
-    public Discount getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
-    }
-
-    public MicroMarket getZip() {
-        return zip;
-    }
-
-    public void setZip(MicroMarket zip) {
-        this.zip = zip;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (customerId != null ? customerId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Customer)) {
-            return false;
-        }
-        Customer other = (Customer) object;
-        if ((this.customerId == null && other.customerId != null) || (this.customerId != null && !this.customerId.equals(other.customerId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "mg.harena.mg.itu.radimilahyharena.tp1.entity.Customer[ customerId=" + customerId + " ]";
-    }
-    
 }

@@ -1,4 +1,4 @@
-package mg.harena.mg.itu.radimilahyharena.tp1;
+package mg.harena.itu.radimilahyharena.tp1;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;

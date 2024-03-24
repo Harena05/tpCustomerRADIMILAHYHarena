@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mg.harena.mg.itu.radimilahyharena.tp1.entity;
+package mg.harena.itu.radimilahyharena.tp1.entity;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
@@ -124,5 +124,5 @@ public class MicroMarket implements Serializable {
     public String toString() {
         return "mg.harena.mg.itu.radimilahyharena.tp1.entity.MicroMarket[ zipCode=" + zipCode + " ]";
     }
-    
+
 }

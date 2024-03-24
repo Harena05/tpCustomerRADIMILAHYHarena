@@ -2,19 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service;
+package mg.harena.itu.radimilahyharena.tp1.service;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import java.util.List;
-import mg.harena.mg.itu.radimilahyharena.tp1.entity.Customer;
+import mg.harena.itu.radimilahyharena.tp1.entity.Customer;
 
 /**
  *
  * @author H
  */
+@RequestScoped
 public class CustomerManager {
 
     @PersistenceContext(unitName = "customerPU")

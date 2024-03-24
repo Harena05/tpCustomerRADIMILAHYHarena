@@ -1,4 +1,4 @@
-package mg.harena.mg.itu.radimilahyharena.tp1.resources;
+package mg.harena.itu.radimilahyharena.tp1.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
